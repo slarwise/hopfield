@@ -1,0 +1,11 @@
+## Python
+__pychache__/
+.coverage
+
+## TeX
+*.aux
+*.log
+*.out
+
+## Vim
+*.swp

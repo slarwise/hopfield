@@ -1,5 +1,5 @@
 import numpy as np
-from pattern_recognition import DeterministicHopfieldNetwork
+from hopfield import DeterministicHopfieldNetwork
 import pattern_utilities as utils
 import matplotlib
 matplotlib.use("TkAgg")

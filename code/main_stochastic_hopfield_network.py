@@ -1,11 +1,11 @@
 from pattern_utilities import generate_n_random_patterns
-from pattern_recognition import StochasticHopfieldNetwork
+from hopfield import StochasticHopfieldNetwork
 import numpy as np
 
 
 def main():
     n_bits = 200
-    n_patterns = 45
+    n_patterns = 7
     noise_parameter = 2
     T = int(2e5)
     n_iterations = 100

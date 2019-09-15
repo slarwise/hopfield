@@ -1,5 +1,5 @@
 import numpy as np
-from pattern_recognition import DeterministicHopfieldNetwork
+from hopfield import DeterministicHopfieldNetwork
 from pattern_utilities import generate_n_random_patterns, print_pattern
 
 

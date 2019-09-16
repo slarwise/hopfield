@@ -75,7 +75,7 @@ class StochasticHopfieldNetwork(HopfieldNetwork):
         """"Update rule when updating a neuron.
 
         Returns 1 with probability
-        1 / (1+exp(-2*noise_parameter*local_field),
+        1 / (1+exp(-2*noise_parameter*local_field)),
         else -1.
         """
         p = 1/(1 + np.exp(-2*self.noise_parameter*local_field))

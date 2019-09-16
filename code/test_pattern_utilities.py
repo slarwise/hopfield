@@ -3,7 +3,7 @@ import pattern_utilities as utils
 import numpy as np
 
 
-class Testpattern_utilities(unittest.TestCase):
+class TestPatternUtilities(unittest.TestCase):
 
     def test_generate_n_random_patterns_shape(self):
         n_patterns = 2

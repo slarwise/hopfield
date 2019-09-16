@@ -1,16 +1,19 @@
+"""Script for estimating the order parameter."""
+
 from pattern_utilities import generate_n_random_patterns
 from hopfield import StochasticHopfieldNetwork
 import numpy as np
 
 
 def main():
-    n_bits = 200
+    n_neurons = 200
+    # Change n_patterns to 45 for the second question
     n_patterns = 7
     noise_parameter = 2
-    T = int(2e5)
+    n_time_steps = int(2e5)
     n_iterations = 100
 
-    patterns = generate_n_random_patterns(n_patterns=n_patterns, n_bits=n_bits)
+    patterns = generate_n_random_patterns(n_patterns, n_neurons)
 
     network = StochasticHopfieldNetwork()
     network.set_patterns(patterns)
@@ -23,12 +26,11 @@ def main():
 
     m = np.zeros(n_iterations)
     for i in range(n_iterations):
-        print(i)
-        for t in range(T):
+        for t in range(n_time_steps):
             updated_pattern = network.update_random_neuron(updated_pattern)
             m[i] += np.inner(updated_pattern, pattern1)
-        m[i] /= n_bits
-        m[i] /= T
+        m[i] /= n_neurons
+        m[i] /= n_time_steps
 
     m_estimate = sum(m) / n_iterations
     print("{:.3f}".format(m_estimate))

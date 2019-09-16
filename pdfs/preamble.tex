@@ -13,6 +13,7 @@
 
 % Figure captions
 \usepackage[font={small,it}]{caption} % Small, italic font for captions
+\newenvironment{code}{\captionsetup{type=listing}}{}
 \captionsetup{format=hang}
 \usepackage{subcaption}
 
@@ -53,6 +54,8 @@
 \usepackage{listings}
 \lstset{captionpos=b}
 \usepackage{color}
+\usepackage{minted}
+\setminted[python]{frame=single, linenos, breaklines}
 
 % For commenting out all figure environments
 \usepackage{environ}

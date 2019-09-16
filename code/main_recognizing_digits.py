@@ -1,3 +1,5 @@
+"""Script for recognizing digits."""
+
 import numpy as np
 from hopfield import DeterministicHopfieldNetwork
 import pattern_utilities as utils
@@ -7,8 +9,10 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    pattern_to_feed = get_pattern1()
-    n_bits = pattern_to_feed.size
+    # Change get_pattern1 to get_pattern2 and get_pattern3 for questions
+    # 2 and 3.
+    pattern_to_feed = get_pattern3()
+    n_neurons = pattern_to_feed.size
     stored_patterns = get_stored_patterns()
     n_epochs = int(1e3)
 
@@ -19,7 +23,9 @@ def main():
 
     updated_pattern = pattern_to_feed.copy()
     for epoch in range(n_epochs):
-        for neuron in range(n_bits):
+        # Update the pattern in typewriter order (since pattern is
+        # flattened, just go in normal element-order).
+        for neuron in range(n_neurons):
             updated_pattern = network.update_neuron(updated_pattern, neuron)
 
     matching_pattern_index = utils.get_index_of_equal_pattern(
@@ -29,24 +35,21 @@ def main():
             updated_pattern, inverted_stored_patterns)
     if matching_pattern_index >= 0:
         matching_pattern = stored_patterns[matching_pattern_index, :]
+        matching_pattern_index += 1
     elif matching_inverted_pattern_index >= 0:
-        matching_pattern_index = -1 * matching_inverted_pattern_index
         matching_pattern = inverted_stored_patterns[
                 matching_inverted_pattern_index, :]
-    else:
-        matching_pattern_index = 5
-        matching_pattern = np.array([])
-
-    if matching_pattern_index > 0:
-        matching_pattern_index += 1
-    else:
+        matching_pattern_index = -1 * matching_inverted_pattern_index
         matching_pattern_index -= 1
+    else:
+        matching_pattern_index = 6
+        matching_pattern = np.array([])
 
     print("Converged to pattern {}".format(matching_pattern_index))
 
     print("Actual pattern: ")
     n_columns = 10
-    utils.print_typewriter_pattern(updated_pattern, n_columns)
+    utils.print_typewriter_pattern(updated_pattern, n_columns=10)
 
     plt.subplot(1, 3, 1)
     utils.plot_pattern(utils.vector_to_typewriter(pattern_to_feed, n_columns))

@@ -1,4 +1,4 @@
-"""Functions working with patterns.
+"""Functions for working with patterns.
 
 A pattern is defined as a 1D-array and several patterns are stored as
 a 2D-array, where each row corresponds to one pattern. Each element can
@@ -7,12 +7,11 @@ take the values -1 or +1 only.
 
 import numpy as np
 from scipy import stats
-import matplotlib.pyplot as plt
 
 
 def generate_n_random_patterns(n_patterns, n_neurons):
     """Returns n_patterns random patterns, each of length n_neurons.
-    
+
     If several patterns are generated, each row corresponds to one
     pattern.
     """
@@ -24,7 +23,7 @@ def generate_n_random_patterns(n_patterns, n_neurons):
 def get_index_of_equal_pattern(pattern_to_match, patterns):
     """Returns the row index of patterns corresponding to the pattern
     that is equal to pattern_to_match.
-    
+
     Returns 1 if no matching pattern is found.
     """
     for index, pattern in enumerate(patterns):
@@ -55,15 +54,3 @@ def print_typewriter_pattern(pattern, n_columns):
 def print_pattern(pattern):
     np.set_printoptions(formatter={"float_kind": lambda x: "%.4f" % x})
     print(repr(pattern), sep=", ")
-
-
-def plot_pattern(pattern):
-    plt.imshow(pattern, cmap="Greys")
-    plt.tick_params(
-            axis="both",
-            which="both",
-            bottom=False,
-            top=False,
-            left=False,
-            labelbottom=False,
-            labelleft=False)

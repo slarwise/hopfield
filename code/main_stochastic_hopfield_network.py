@@ -1,8 +1,8 @@
 """Script for estimating the order parameter."""
 
-from pattern_utilities import generate_n_random_patterns
-from hopfield import StochasticHopfieldNetwork
 import numpy as np
+from hopfield import StochasticHopfieldNetwork
+from pattern_utilities import generate_n_random_patterns
 
 
 def main():
@@ -26,7 +26,7 @@ def main():
 
     m = np.zeros(n_iterations)
     for i in range(n_iterations):
-        for t in range(n_time_steps):
+        for _ in range(n_time_steps):
             updated_pattern = network.update_random_neuron(updated_pattern)
             m[i] += np.inner(updated_pattern, pattern1)
         m[i] /= n_neurons

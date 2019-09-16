@@ -9,13 +9,13 @@ def main():
     n_neurons = 120
     n_patterns_vector = [12, 24, 48, 70, 100, 120]
     # Set diagonal_weights_rule to "non-zero" in second task
-    diagonal_weights_rule = "zero" 
+    diagonal_weights_rule = "zero"
     n_iterations = int(1e5)
     one_step_error_probability = np.zeros(len(n_patterns_vector))
 
     for n_patterns_i, n_patterns in enumerate(n_patterns_vector):
         n_errors = 0
-        for i in range(n_iterations):
+        for _ in range(n_iterations):
             network = DeterministicHopfieldNetwork()
 
             patterns = generate_n_random_patterns(n_patterns, n_neurons)
@@ -28,9 +28,9 @@ def main():
             neuron_to_update_index = np.random.randint(n_neurons)
 
             updated_pattern = network.update_neuron(
-                    original_pattern,
-                    neuron_to_update_index
-                    )
+                original_pattern,
+                neuron_to_update_index
+                )
             updated_neuron = updated_pattern[neuron_to_update_index]
             original_neuron = original_pattern[neuron_to_update_index]
             updated_neuron = updated_pattern[neuron_to_update_index]

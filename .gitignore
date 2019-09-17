@@ -16,3 +16,6 @@ _minted*
 
 ## MacOS
 .DS_Store
+
+## pdf folder
+pdfs/
